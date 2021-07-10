@@ -1,0 +1,55 @@
+{
+  "name": "json-blocks-builder",
+  "version": "0.0.1",
+  "description": "JSON blocks builder",
+  "main": "dist/json-blocks-builder.js",
+  "scripts": {
+    "test": "jest",
+    "build": "NODE_ENV=production babel src --out-dir dist --source-maps inline"
+  },
+  "engines": {
+    "node": ">=13"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vladbndko/json-blocks-builder.git"
+  },
+  "keywords": [
+    "blocks-builder"
+  ],
+  "author": "Vladyslav Bondarenko",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/vladbndko/json-blocks-builder/issues"
+  },
+  "jest": {
+    "testEnvironment": "node"
+  },
+  "homepage": "https://github.com/vladbndko/json-blocks-builder#readme",
+  "devDependencies": {
+    "@babel/cli": "^7.14.5",
+    "@babel/core": "^7.14.6",
+    "@babel/node": "^7.14.7",
+    "@babel/plugin-proposal-pipeline-operator": "^7.14.5",
+    "@babel/preset-env": "^7.14.7",
+    "babel-eslint": "^10.1.0",
+    "babel-jest": "^27.0.6",
+    "debug": "^4.3.2",
+    "eslint": "^7.30.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-babel": "^5.3.1",
+    "eslint-plugin-import": "^2.23.4",
+    "eslint-plugin-jest": "^24.3.6",
+    "eslint-plugin-prettier": "^3.4.0",
+    "jest": "^27.0.6",
+    "jest-cli": "^27.0.6",
+    "prettier": "^2.3.2"
+  },
+  "dependencies": {
+    "html-minifier": "^4.0.0",
+    "html-parse-stringify": "^3.0.1",
+    "lodash": "^4.17.21",
+    "slugify": "^1.5.3"
+  }
+}

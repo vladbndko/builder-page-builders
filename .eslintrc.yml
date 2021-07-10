@@ -1,0 +1,25 @@
+---
+
+plugins:
+  - jest
+  - babel
+  - prettier
+
+# https://eslint.org/docs/user-guide/configuring#specifying-environments
+env:
+  browser: true
+  node: true
+  jest: true
+  es2021: true
+
+# https://github.com/babel/babel-eslint
+parser: babel-eslint
+
+extends:
+  - 'airbnb-base'
+  - 'plugin:jest/recommended'
+  - 'prettier'
+
+rules:
+  no-console: 0
+  prettier/prettier: error

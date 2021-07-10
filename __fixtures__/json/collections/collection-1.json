@@ -1,0 +1,45 @@
+{
+  "blocks": {
+    "about": {
+      "fields": {
+        "title": "Title text",
+        "content": "Text content",
+        "image": "https://via.placeholder.com/720x480.jpg"
+      }
+    },
+    "slider": {
+      "fields": {
+        "items": [
+          {
+            "title": "Slide #1 title",
+            "content": "<p>Some text</p>",
+            "image": "https://via.placeholder.com/1920x1080.jpg",
+            "buttons": [
+              {
+                "text": "Show more",
+                "url": "https://example.com",
+                "options": {
+                  "safe": true,
+                  "blank": true
+                }
+              }
+            ]
+          },
+          {
+            "title": "Slide #2 title",
+            "content": "<p>About us</p>",
+            "image": "https://via.placeholder.com/1920x1080.jpg",
+            "buttons": [
+              {
+                "text": "Read",
+                "url": "/about",
+                "safe": false,
+                "blank": false
+              }
+            ]
+          }
+        ]
+      }
+    }
+  }
+}
