@@ -1,5 +1,5 @@
 import { has, get } from 'lodash';
-import labelNode from './common/label';
+import simpleLabel from './common/simpleLabel';
 import renderField from './common/field';
 import { makeId } from '../utils';
 
@@ -11,13 +11,14 @@ import { makeId } from '../utils';
 export default (scheme) => {
   const id = makeId(scheme.text);
   const children = [
-    labelNode(id, scheme.text),
+    simpleLabel(id, scheme.text),
     {
       type: 'tag',
       name: 'textarea',
       voidElement: false,
       attrs: {
         id,
+        name: id,
         ...scheme.attrs,
         class: has(scheme, 'attrs.class') ? `form-control ${scheme.attrs.class}` : 'form-control',
       },
