@@ -1,37 +1,28 @@
-import parent from './common/parent';
+import labelNode from './common/label';
+import renderField from './common/field';
+import { makeId } from '../utils';
+import { has } from 'lodash';
 
-const HTML = require('html-parse-stringify');
-const slugify = require('slugify');
-
-const text = (schema) => {
-  const id = slugify(schema.text, {
-    lower: true,
-  });
-  const ast = [
-    {
-      type: 'tag',
-      name: 'label',
-      voidElement: false,
-      attrs: {
-        for: id,
-        class: 'form-label',
-      },
-      children: [{ type: 'text', content: schema.text }],
-    },
+/**
+ * Render a text field type in HTML
+ * @param {object} scheme Field scheme
+ * @return {string} HTML representation of a text field
+ */
+export default (scheme) => {
+  const id = makeId(scheme.text);
+  const children = [
+    labelNode(id, scheme.text),
     {
       type: 'tag',
       name: 'input',
       voidElement: true,
       attrs: {
-        id: slugify(schema.text, {
-          lower: true,
-        }),
+        id,
         type: 'text',
-        ...schema.attrs,
-        class: schema.attrs.class ? `form-control ${schema.attrs.class}` : 'form-control',
+        ...scheme.attrs,
+        class: has(scheme, 'attrs.class') ? `form-control ${scheme.attrs.class}` : 'form-control',
       },
     },
   ];
-  return parent(HTML.stringify(ast));
+  return renderField(children);
 };
-export default text;

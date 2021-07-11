@@ -1,6 +1,8 @@
 import { keys } from 'lodash';
 import { readHTMLFixture } from '../../utils';
-import text from '../../src/fields/text';
+import renderTextField from '../../src/fields/text';
+
+const FIELD_TYPE = 'text';
 
 const fieldsToTest = {
   default: {
@@ -23,7 +25,7 @@ const fieldsToTest = {
   },
 };
 
-test.each(keys(fieldsToTest))('Field:text(%s)', (key) => {
-  const expectedHTML = readHTMLFixture(`fields/text/${key}.html`);
-  expect(text(fieldsToTest[key])).toBe(expectedHTML);
+test.each(keys(fieldsToTest))(`Field:${FIELD_TYPE}(%s)`, (key) => {
+  const expectedHTML = readHTMLFixture(`fields/${FIELD_TYPE}/${key}.html`);
+  expect(renderTextField(fieldsToTest[key])).toBe(expectedHTML);
 });
