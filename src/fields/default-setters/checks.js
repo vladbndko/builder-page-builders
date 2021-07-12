@@ -1,9 +1,10 @@
 import { set } from 'lodash';
+
 /**
  * Set default to check fields: radios, set of checkboxes
- * @param {array} nodes Nodes
- * @param {string|number} defaultValue Default value to set
- * @return {array} Nodes
+ * @param {Array} nodes Nodes
+ * @param {String|Number} defaultValue Default value to set
+ * @return {Array} Nodes
  */
 export default (nodes, defaultValue) =>
   [...nodes].map((node) => {

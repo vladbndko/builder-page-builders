@@ -1,7 +1,7 @@
 import HTML from 'html-parse-stringify';
 
 /**
- * Render a field wrapped in the parent
+ * Render a field
  * @param {array} nodes Nodes
  * @return {string} HTML representation of a field
  */

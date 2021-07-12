@@ -1,15 +1,16 @@
-import renderField from './common/field';
+import renderField from '../renders/renderField';
 import { makeId } from '../utils';
 import defaultSetters from './default-setters';
 import label from './common/label';
 
 /**
  * Make a radio node
- * @param {object} option Radio options
- * @return {object} Radio node
+ * @param {Object} option Radio options
+ * @param {String} schemaText Schema name
+ * @return {Object} Radio node
  */
-const radioNode = (option) => {
-  const id = makeId(option.text);
+const radioNode = (option, schemaText) => {
+  const id = `${makeId(schemaText)}-${makeId(option.text)}`;
   return {
     type: 'tag',
     name: 'div',
@@ -25,7 +26,6 @@ const radioNode = (option) => {
         attrs: {
           type: 'radio',
           id,
-          name: id,
           value: option.value,
           class: 'form-check-input',
         },
@@ -41,7 +41,7 @@ const radioNode = (option) => {
  * @return {string} HTML representation of radio fields
  */
 export default (schema) => {
-  const nodes = schema.options.map(radioNode);
+  const nodes = schema.options.map((option) => radioNode(option, schema.text));
 
   const nodesReady =
     schema.default !== undefined ? defaultSetters.radio(nodes, schema.default) : nodes;

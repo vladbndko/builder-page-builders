@@ -1,13 +1,13 @@
 import classNames from 'classnames';
-import label from './common/label';
-import renderField from './common/field';
+import renderField from '../renders/renderField';
 import { makeId } from '../utils';
 import defaultSetters from './default-setters';
+import label from './common/label';
 
 /**
  * Render a checkbox field type in HTML
- * @param {object} schema Field schema
- * @return {string} HTML representation of a checkbox field
+ * @param {Object} schema Field schema
+ * @return {String} HTML representation of a checkbox field
  */
 export default (schema) => {
   const id = makeId(schema.text);
