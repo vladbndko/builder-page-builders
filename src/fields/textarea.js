@@ -1,17 +1,19 @@
-import { has, get } from 'lodash';
-import simpleLabel from './common/simpleLabel';
+import classNames from 'classnames';
 import renderField from './common/field';
 import { makeId } from '../utils';
+import defaultSetters from './default-setters';
+import label from './common/label';
 
 /**
  * Render a textarea field type in HTML
- * @param {object} scheme Field scheme
+ * @param {object} schema Field schema
  * @return {string} HTML representation of a textarea field
  */
-export default (scheme) => {
-  const id = makeId(scheme.text);
-  const children = [
-    simpleLabel(id, scheme.text),
+export default (schema) => {
+  const id = makeId(schema.text);
+
+  const nodes = [
+    label(schema.text, id),
     {
       type: 'tag',
       name: 'textarea',
@@ -19,11 +21,15 @@ export default (scheme) => {
       attrs: {
         id,
         name: id,
-        ...scheme.attrs,
-        class: has(scheme, 'attrs.class') ? `form-control ${scheme.attrs.class}` : 'form-control',
+        ...schema.attrs,
+        class: classNames('form-control', schema.attrs?.class),
       },
-      children: [{ type: 'text', content: get(scheme, 'default', '') }],
+      children: [],
     },
   ];
-  return renderField(children);
+
+  const nodesReady =
+    schema.default !== undefined ? defaultSetters.textarea(nodes, schema.default) : nodes;
+
+  return renderField(nodesReady);
 };

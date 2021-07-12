@@ -1,7 +1,7 @@
-import { has, set } from 'lodash';
-import checkLabel from './common/checkLabel';
 import renderField from './common/field';
 import { makeId } from '../utils';
+import defaultSetters from './default-setters';
+import label from './common/label';
 
 /**
  * Make a radio node
@@ -30,26 +30,21 @@ const radioNode = (option) => {
           class: 'form-check-input',
         },
       },
-      checkLabel(id, option.text),
+      label(option.text, id, 'form-check-label'),
     ],
   };
 };
 
 /**
  * Render radio fields type in HTML
- * @param {object} scheme Field scheme
+ * @param {object} schema Field schema
  * @return {string} HTML representation of radio fields
  */
-export default (scheme) => {
-  const children = scheme.options.map(radioNode).map((node) => {
-    if (
-      has(scheme, 'default') &&
-      scheme.default !== '' &&
-      node.children[0].attrs.value === scheme.default
-    ) {
-      set(node.children[0].attrs, 'checked', 'checked');
-    }
-    return node;
-  });
-  return renderField(children);
+export default (schema) => {
+  const nodes = schema.options.map(radioNode);
+
+  const nodesReady =
+    schema.default !== undefined ? defaultSetters.radio(nodes, schema.default) : nodes;
+
+  return renderField(nodesReady);
 };

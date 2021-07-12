@@ -6,6 +6,7 @@ const FIELD_TYPE = 'radio';
 
 const fieldsToTest = {
   default: {
+    type: FIELD_TYPE,
     text: 'Radios',
     default: 0,
     options: [

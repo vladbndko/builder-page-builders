@@ -6,12 +6,14 @@ const FIELD_TYPE = 'textarea';
 
 const fieldsToTest = {
   default: {
+    type: FIELD_TYPE,
     text: 'Textarea',
     attrs: {
       rows: '5',
     },
   },
   hasValue: {
+    type: FIELD_TYPE,
     text: 'I have a value',
     default: 'Some value',
   },
