@@ -37,8 +37,8 @@ const radioNode = (option, schemaText) => {
 
 /**
  * Render radio fields type in HTML
- * @param {object} schema Field schema
- * @return {string} HTML representation of radio fields
+ * @param {Object} schema Field schema
+ * @return {String} HTML representation of radio fields
  */
 export default (schema) => {
   const nodes = schema.options.map((option) => radioNode(option, schema.text));

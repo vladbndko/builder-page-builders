@@ -6,11 +6,18 @@ import { set } from 'lodash';
  * @param {String|Number} defaultValue Default value to set
  * @return {Array} Nodes
  */
-export default (nodes, defaultValue) =>
-  nodes.map((node) => {
-    const { value } = node.children[0].attrs;
-    if (value === defaultValue) {
-      set(node.children[0].attrs, 'selected', 'selected');
+export default (nodes, defaultValue) => {
+  const optionsNode = nodes[1].children.map((optionNode) => {
+    if (optionNode.attrs.value === defaultValue) {
+      set({ ...optionNode }.attrs, 'selected', 'selected');
     }
-    return node;
+    return optionNode;
   });
+  return [
+    nodes[0],
+    {
+      ...nodes[1],
+      children: optionsNode,
+    },
+  ];
+};
