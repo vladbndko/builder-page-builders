@@ -1,7 +1,6 @@
 import classNames from 'classnames';
 import renderField from '../renders/renderField';
-import { makeId } from '../utils';
-import defaultSetters from './default-setters';
+import { makeId, setValue } from '../utils';
 import label from './common/label';
 
 /**
@@ -11,8 +10,7 @@ import label from './common/label';
  */
 export default (schema) => {
   const id = makeId(schema.text);
-
-  const nodes = [
+  return renderField([
     label(schema.text, id),
     {
       type: 'tag',
@@ -20,16 +18,10 @@ export default (schema) => {
       voidElement: false,
       attrs: {
         id,
-        name: id,
         ...schema.attrs,
         class: classNames('form-control', schema.attrs?.class),
       },
-      children: [],
+      children: [{ type: 'text', content: setValue([schema.value, schema.default]) }],
     },
-  ];
-
-  const nodesReady =
-    schema.default !== undefined ? defaultSetters.textarea(nodes, schema.default) : nodes;
-
-  return renderField(nodesReady);
+  ]);
 };

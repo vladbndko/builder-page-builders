@@ -8,6 +8,7 @@ const fieldsToTest = {
   default: {
     type: FIELD_TYPE,
     text: 'Default label',
+    default: 'Lorem ipsum',
     attrs: {
       placeholder: 'Example placeholder',
     },
@@ -23,6 +24,7 @@ const fieldsToTest = {
     type: FIELD_TYPE,
     text: 'Email',
     default: 'hello@example.com',
+    value: 'some@example.net',
     attrs: {
       type: 'email',
     },

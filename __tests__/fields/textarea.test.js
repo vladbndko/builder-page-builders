@@ -8,9 +8,15 @@ const fieldsToTest = {
   default: {
     type: FIELD_TYPE,
     text: 'Textarea',
+    value: 'Text value',
+    default: 'Text default',
     attrs: {
       rows: '5',
     },
+  },
+  empty: {
+    type: FIELD_TYPE,
+    text: 'Empty',
   },
   hasValue: {
     type: FIELD_TYPE,

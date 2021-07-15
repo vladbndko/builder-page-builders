@@ -8,17 +8,13 @@ const fieldsToTest = {
   default: {
     type: FIELD_TYPE,
     text: 'Default checkbox',
-    attrs: {
-      value: '1',
-    },
+    value: 1,
   },
   checked: {
     type: FIELD_TYPE,
     text: 'Checked checkbox',
     default: true,
-    attrs: {
-      value: '0',
-    },
+    value: 0,
   },
 };
 
