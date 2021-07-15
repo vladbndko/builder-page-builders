@@ -2,6 +2,7 @@ import renderField from '../renders/renderField';
 import { makeId } from '../utils';
 import defaultSetters from './default-setters';
 import label from './common/label';
+import title from './common/title';
 
 /**
  * Make a radio node
@@ -46,5 +47,5 @@ export default (schema) => {
   const nodesReady =
     schema.default !== undefined ? defaultSetters.radio(nodes, schema.default) : nodes;
 
-  return renderField(nodesReady);
+  return renderField([title(schema.text), ...nodesReady]);
 };
